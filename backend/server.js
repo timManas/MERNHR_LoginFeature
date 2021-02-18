@@ -26,6 +26,9 @@ const connectDB = async () => {
   }
 }
 
+// Connect Backend to MongoDB
+connectDB()
+
 // Allows express to access json data
 app.use(express.json())
 
@@ -33,8 +36,6 @@ app.use(express.json())
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 
-// Connect Backend to MongoDB
-connectDB()
 
 // Make the upload folder static
 const __dirname = path.resolve()
