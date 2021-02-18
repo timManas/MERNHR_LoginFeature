@@ -2,6 +2,7 @@ import path from 'path'
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import  productRoutes   from './productRoutes.js'
 
 // Initialize Dot Env File
 dotenv.config()
@@ -23,6 +24,9 @@ const connectDB = async () => {
     process.exit(1) // exit(1) - means you return with error
   }
 }
+
+// Setup Routes BEFORE WE SEND RESPONSE .... OMGGGGGG
+app.use('/api/products', productRoutes)
 
 // Connect Backend to MongoDB
 connectDB()
