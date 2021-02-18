@@ -43,3 +43,16 @@ router.route('/:id').get(getProductById)
 - How to access the contents of the GET/POST request ?
 > Use req.body.xyz (ex: req.body._id or req.body.email)
 - app.use(express.json()) will allow us to use JSON data in the request body
+
+
+- On Postman Authorization, instead of having to manually copy the token and entering it to the header of 'api/user/profile'
+> We can use Bearer Token under "Authentication"
+How ?
+
+Example:
+1. Create a POST /api/users/login  (This allows user to login)
+2. Go to test and add this line: 
+pm.environment.set("TOKEN", pm.response.json().token)
+3. Create a GET /api/users/profile (This fetches the users profile ONCE verified logged in)
+4. Set Authorization of GET request to have Authorization type: "Bearer Token"
+  > Enter the {{TOKEN}}
