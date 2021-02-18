@@ -2,7 +2,8 @@ import path from 'path'
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import  productRoutes   from './productRoutes.js'
+import productRoutes from './productRoutes.js'
+import userRoutes from './userRoutes.js'
 
 // Initialize Dot Env File
 dotenv.config()
@@ -25,8 +26,12 @@ const connectDB = async () => {
   }
 }
 
+// Allows express to access json data
+app.use(express.json())
+
 // Setup Routes BEFORE WE SEND RESPONSE .... OMGGGGGG
 app.use('/api/products', productRoutes)
+app.use('/api/users', userRoutes)
 
 // Connect Backend to MongoDB
 connectDB()
